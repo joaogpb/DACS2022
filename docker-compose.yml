@@ -8,16 +8,18 @@ services:
       MYSQL_USER: 'admin'
       MYSQL_PASSWARD: 'root'
       MYSQL_ROOT_PASSWARD: 'root'
-    ports:
-      -'3312:3306'  
-    expose:
-      - '3012'  
+    #ports:
+    #  -'3312:3306'  
+    #expose:
+    #  - '3012'  
   webdacsbachinski:
     image: bachinskidacs2022:latest
     depends_on: 
       - "dbbachinski"
     ports:
-      - "8087:8081"
+      -'3312:3306'  
+    expose:
+      - '3012'
     environment:
       - DB_HOST=dbbachinski:3312
       - DB_USER=root
